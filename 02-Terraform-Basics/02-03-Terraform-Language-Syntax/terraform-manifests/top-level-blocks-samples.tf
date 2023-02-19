@@ -5,17 +5,17 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 4.0"
     }
   }
   # Adding Backend as S3 for Remote State Storage with State Locking
   backend "s3" {
-    bucket = "terraform-stacksimplify"
-    key    = "dev2/terraform.tfstate"
+    bucket = "terraform-misandbox-dev"
+    key    = "sandbox-dev/terraform.tfstate"
     region = "us-east-1"  
 
     # For State Locking
-    dynamodb_table = "terraform-dev-state-table"
+    dynamodb_table = "terraform-sandbox-dev-state-table"
   }
 }
 #####################################################################
@@ -27,7 +27,7 @@ provider "aws" {
 #####################################################################
 # Block-3: Resource Block
 resource "aws_instance" "ec2demo" {
-  ami           = "ami-04d29b6f966df1537" # Amazon Linux
+  ami           = "ami-0557a15b87f6559cf" # Amazon Linux
   instance_type = var.instance_type
 }
 #####################################################################

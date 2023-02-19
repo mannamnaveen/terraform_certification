@@ -2,11 +2,9 @@
 #/FUTURE-TOPICS
 #.gitignore
 
-# macOS Files
-.DS_Store
 
 # Ignore .sh files
-#*.sh
+*.sh
 
 # Terraform Files and Folders
 .terraform

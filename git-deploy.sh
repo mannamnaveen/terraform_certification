@@ -2,7 +2,9 @@
 
 echo "Add files and do local commit"
 git add .
-git commit -am "Welcome to Terraform-Certification"
+
+echo "Commit the files"
+git commit -am "Terraform-Certification"
 
 echo "Pushing to Github Repository"
-git push
+git push -u origin master
