@@ -1,26 +1,19 @@
-# Create S3 Bucket - with Input Variables 
-/*
-resource "aws_s3_bucket" "mys3bucket" {
-  bucket = "${var.app_name}-${var.environment_name}-bucket"
-  acl = "private"
-  tags = {
-    Name = "${var.app_name}-${var.environment_name}-bucket"
-    Environment = var.environment_name
-  }
-}
-*/
-
-# Define Local Values
+# S3 Bucket using locals
 locals {
-  bucket-name = "${var.app_name}-${var.environment_name}-bucket" # Complex expression
+  # Defining a local name for the bucket
+  bucket_name = "mialeev-${var.app_name}-${var.environment_name}-bucket"
 }
 
-# Create S3 Bucket - with Input Variables & Local Values
-resource "aws_s3_bucket" "mys3bucket" {
-  bucket = local.bucket-name
-  acl = "private"
+resource "aws_s3_bucket" "bucket" {
+  bucket = local.bucket_name
+
   tags = {
-    Name = local.bucket-name
-    Environment = var.environment_name
+    Name        = "My bucket"
+    Environment = "Dev"
   }
+}
+
+resource "aws_s3_bucket_acl" "bucket_acl" {
+  bucket = aws_s3_bucket.bucket.id
+  acl    = "private"
 }

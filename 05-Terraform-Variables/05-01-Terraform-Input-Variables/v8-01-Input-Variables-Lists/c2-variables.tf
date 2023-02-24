@@ -14,11 +14,11 @@ variable "ec2_ami_id" {
 variable "ec2_instance_count" {
   description = "EC2 Instance Count"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "ec2_instance_type" {
-  description = "EC2 Instance Type"
+  description = "List of ec2 instance types"
   type = list(string)
-  default = ["t3.micro", "t3.small", "t3.large"]
+  default = [ "t2.micro","t3.medium","t3.large" ]
 }

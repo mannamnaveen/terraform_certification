@@ -14,7 +14,7 @@ variable "ec2_ami_id" {
 variable "ec2_instance_count" {
   description = "EC2 Instance Count"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 /*
@@ -27,20 +27,20 @@ variable "ec2_instance_type" {
 
 
 variable "ec2_instance_tags" {
-  description = "EC2 Instance Tags"
-  type = map(string)
+  description = "Tags for ec2 instances"
+  type        = map(string)
   default = {
     "Name" = "ec2-web"
-    "Tier" = "Web"
+    "Tier" = "web"
   }
 }
 
 variable "ec2_instance_type_map" {
-  description = "EC2 Instance Type"
-  type = map(string)
+  description = "Instance types for the ec2"
+  type        = map(string)
   default = {
-    "small-apps" = "t3.micro"
-    "medium-apps" = "t3.medium" 
-    "big-apps" = "t3.large"    
+    "dev" = "t3.micro"
+    "uat" = "t3.medium"
+    "prd" = "t3.large"
   }
 }
